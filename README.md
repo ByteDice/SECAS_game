@@ -3,8 +3,8 @@ A game made for the LBS gymnasium game-jam #2 (2025).\
 (Duration: 42 hours. Theme: "British Pigs")
 
 > [!NOTE]
-> This will remain **untouched** from what I made during the jam.
-> Things may be too easy, too hard, and/or confusing.
+> This will remain **untouched** from what I made during the jam. \
+> Things may be too easy, too hard, and/or confusing. \
 > Expect a buggy mess. It was my first ever jam.
 
 ## How to play:
