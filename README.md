@@ -7,7 +7,7 @@ A game made for the LBS gymnasium game-jam #2 (2025).\
 > Things may be too easy, too hard, and/or confusing. \
 > Expect a buggy mess. It was my first ever jam.
 
-## How to play:
+## How to play
 Download the source and open it in Godot (4.5).
 
 The goal is to protect your pigs from seagulls by feeding them (the seagulls) biscuits. \
