@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bv6wpdjivdlf4"]
+
+[ext_resource type="Texture2D" uid="uid://bwicnrb8alscg" path="res://assets/sprites/biscuit_o_tron.png" id="1_71t4g"]
+[ext_resource type="Script" uid="uid://d2t5nkrsib24d" path="res://scripts/biscuit_o_tron.gd" id="1_a0ycn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0ycn"]
+size = Vector2(83, 150)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_71t4g"]
+radius = 26.172504
+
+[node name="BiscuitOTron" type="StaticBody2D"]
+script = ExtResource("1_a0ycn")
+biscuit_increment = 0.15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-39.5, 10)
+shape = SubResource("RectangleShape2D_a0ycn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.359375, 0.359375)
+texture = ExtResource("1_71t4g")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -76.0
+offset_top = -90.0
+offset_right = 77.0
+offset_bottom = -72.0
+theme_override_font_sizes/font_size = 10
+
+[node name="Trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(42, 51)
+shape = SubResource("CircleShape2D_71t4g")
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]
+[connection signal="body_exited" from="Trigger" to="." method="_on_trigger_body_exited"]

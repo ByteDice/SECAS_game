@@ -1,0 +1,138 @@
+[gd_scene load_steps=11 format=3 uid="uid://dhp0hi4qpiu4q"]
+
+[ext_resource type="Texture2D" uid="uid://dske0kvup2tru" path="res://assets/sprites/grass.png" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dvaagwge5g1g" path="res://actors/player_character.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://c8udxism1aby4" path="res://scripts/main_scene.gd" id="1_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://dtvbg6shi4amx" path="res://assets/sprites/fence.png" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bv6wpdjivdlf4" path="res://actors/biscuit_o_tron.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cdy44cambk6ji" path="res://ui/key_sequence.tscn" id="4_tbgi4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tefeu"]
+radius = 151.00331
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+size = Vector2(1215, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(20, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(20, 380)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_o6xl0")
+pig_amount = 5
+
+[node name="GrassBackground" type="Sprite2D" parent="."]
+texture_repeat = 2
+scale = Vector2(0.187, 0.187)
+texture = ExtResource("1_0wfyh")
+region_enabled = true
+region_rect = Rect2(0, 0, 6500, 4000)
+
+[node name="PigBoundary" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="PigBoundary"]
+position = Vector2(-188, 52)
+shape = SubResource("CircleShape2D_tefeu")
+
+[node name="SceneBounds" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="SceneBounds"]
+position = Vector2(0, -290)
+shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="Bottom" type="CollisionShape2D" parent="SceneBounds"]
+position = Vector2(0, 315)
+shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="Left" type="CollisionShape2D" parent="SceneBounds"]
+position = Vector2(-586, 0)
+shape = SubResource("RectangleShape2D_tbgi4")
+
+[node name="Right" type="CollisionShape2D" parent="SceneBounds"]
+position = Vector2(565, 0)
+shape = SubResource("RectangleShape2D_tbgi4")
+
+[node name="Fences" type="StaticBody2D" parent="SceneBounds"]
+
+[node name="FenceTop" type="Sprite2D" parent="SceneBounds/Fences"]
+texture_repeat = 2
+position = Vector2(235.99997, -314)
+scale = Vector2(0.475, 0.252)
+texture = ExtResource("3_sugp2")
+region_enabled = true
+region_rect = Rect2(12.217192, 0, 1667.438, 74.37027)
+
+[node name="FenceBottom" type="Sprite2D" parent="SceneBounds/Fences"]
+texture_repeat = 2
+position = Vector2(236.00002, 313.99997)
+scale = Vector2(0.475, 0.252)
+texture = ExtResource("3_sugp2")
+region_enabled = true
+region_rect = Rect2(12.217192, 0, 1667.438, 74.37027)
+
+[node name="FenceRight" type="Sprite2D" parent="SceneBounds/Fences"]
+texture_repeat = 2
+position = Vector2(566, 25)
+rotation = -4.712389
+scale = Vector2(0.475, 0.252)
+texture = ExtResource("3_sugp2")
+region_enabled = true
+region_rect = Rect2(12.217192, 0, 1667.438, 74.37027)
+
+[node name="FenceLeftTop" type="Sprite2D" parent="SceneBounds/Fences"]
+texture_repeat = 2
+position = Vector2(-152, -175.00002)
+rotation = -1.5707964
+scale = Vector2(0.475, 0.252)
+texture = ExtResource("3_sugp2")
+region_enabled = true
+region_rect = Rect2(12.217192, 0, 763.44775, 74.37027)
+
+[node name="FenceLeftBottom" type="Sprite2D" parent="SceneBounds/Fences"]
+texture_repeat = 2
+position = Vector2(-152, 286)
+rotation = -1.5707964
+scale = Vector2(0.475, 0.252)
+texture = ExtResource("3_sugp2")
+region_enabled = true
+region_rect = Rect2(1.8075199, 0, 714.7975, 74.37027)
+
+[node name="LeftTop" type="CollisionShape2D" parent="SceneBounds/Fences"]
+position = Vector2(-151, -205)
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="LeftBottom" type="CollisionShape2D" parent="SceneBounds/Fences"]
+position = Vector2(-151, 306)
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="BiscuitOTrons" type="StaticBody2D" parent="."]
+
+[node name="BiscuitOTron" parent="BiscuitOTrons" instance=ExtResource("4_jyhfs")]
+position = Vector2(-472, 195)
+
+[node name="BiscuitOTron2" parent="BiscuitOTrons" instance=ExtResource("4_jyhfs")]
+position = Vector2(-472, -13)
+
+[node name="BiscuitOTron3" parent="BiscuitOTrons" instance=ExtResource("4_jyhfs")]
+position = Vector2(-472, -216)
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_o5qli")]
+movement_type = 2
+speed = 2.0
+dash_type = 5
+camera_type = 0
+max_biscuits = 3
+
+[node name="KeySequence" parent="PlayerCharacter" instance=ExtResource("4_tbgi4")]
+offset_top = -100.0
+offset_bottom = -100.0
+
+[node name="FarmTopLeft" type="Marker2D" parent="."]
+position = Vector2(65, -258)
+
+[node name="FarmBottomRight" type="Marker2D" parent="."]
+position = Vector2(497, 252)

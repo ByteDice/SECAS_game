@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://coowerg56exy7"]
+
+[ext_resource type="Texture2D" uid="uid://cgrqjhigxfby" path="res://assets/sprites/seagull_fly_0.png" id="1_dr8jw"]
+[ext_resource type="Texture2D" uid="uid://dgvgknc7pbhwp" path="res://assets/sprites/seagull_fly_1.png" id="2_cef41"]
+[ext_resource type="Script" uid="uid://dms2mkhl6pbyo" path="res://scripts/seagull_particle.gd" id="3_cef41"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1sxsl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dr8jw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cef41")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="SeagullParticle" type="AnimatedSprite2D"]
+scale = Vector2(0.313, 0.313)
+sprite_frames = SubResource("SpriteFrames_1sxsl")
+script = ExtResource("3_cef41")
+speed = 400.0

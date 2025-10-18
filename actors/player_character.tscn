@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvaagwge5g1g"]
+
+[ext_resource type="Script" uid="uid://cknbo3ltp5mc3" path="res://scripts/player_character.gd" id="1_r4hof"]
+[ext_resource type="Texture2D" uid="uid://lfoeatk81tam" path="res://assets/sprites/farmer.png" id="2_r4hof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r4hof"]
+size = Vector2(40, 80)
+
+[sub_resource type="Animation" id="Animation_r4hof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.31249997, 0.3125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.313]
+}
+
+[sub_resource type="Animation" id="Animation_irlf7"]
+resource_name = "flip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.313, -0.313]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qgghw"]
+_data = {
+&"RESET": SubResource("Animation_r4hof"),
+&"flip": SubResource("Animation_irlf7")
+}
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_r4hof")
+speed = 300.0
+sprint_speed = 600.0
+jump_power = 7.0
+coyote_time = 0.2
+jump_buffer_timer = 0.2
+aerial_dash_count = 1
+vel_multiplier_after_dash = 0.5
+dash_speed = 1200.0
+dash_dur = 0.2
+dash_cd = 0.5
+gravity = 14.0
+terminal_vel = 1000.0
+max_health = 100.0
+starting_health = 50.0
+iframe_dur = 0.5
+camera_type = 2
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_r4hof")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.31249997, 0.3125)
+texture = ExtResource("2_r4hof")
+
+[node name="BiscuitPos" type="Marker2D" parent="Sprite"]
+position = Vector2(99.20001, -83.2)
+scale = Vector2(3.2000003, 3.1999998)
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+libraries = {
+&"": SubResource("AnimationLibrary_qgghw")
+}

@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://8rpm2uklud0j"]
+
+[ext_resource type="LabelSettings" uid="uid://ch4qnno2euv16" path="res://ui/styles/font_gost_commo.tres" id="1_0dkrt"]
+[ext_resource type="Script" uid="uid://dpv5jt28axlpa" path="res://scripts/main_menu.gd" id="1_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://dkx5rhq6cd7fq" path="res://assets/sprites/pig.png" id="2_rmr83"]
+[ext_resource type="Theme" uid="uid://78ymohvmckry" path="res://ui/styles/theme_menu_buttons.tres" id="2_wk0pr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dkrt"]
+bg_color = Color(7.670838e-08, 0.11997212, 0.012806023, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmr83"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8uxxo"]
+texture = ExtResource("2_rmr83")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wk0pr")
+square_rot = 0.15
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0dkrt")
+
+[node name="Seagulls" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rmr83")
+
+[node name="BgSquare" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -246.0
+offset_right = 246.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(246, 246)
+theme_override_styles/panel = SubResource("StyleBoxTexture_8uxxo")
+
+[node name="InteractiblesContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -36.5
+offset_right = 310.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 80
+
+[node name="Label" type="Label" parent="InteractiblesContainer"]
+layout_mode = 2
+text = "Super Epic Cool Awesome Stuff:
+The Game"
+label_settings = ExtResource("1_0dkrt")
+horizontal_alignment = 1
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="InteractiblesContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PlayButton" type="Button" parent="InteractiblesContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(175, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("2_wk0pr")
+text = "Play"
+
+[node name="CreditsButton" type="Button" parent="InteractiblesContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(175, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("2_wk0pr")
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="InteractiblesContainer/ButtonsContainer"]
+custom_minimum_size = Vector2(175, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme = ExtResource("2_wk0pr")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -49.0
+offset_right = 261.0
+grow_vertical = 0
+text = "Made for the LBS 2025 Game Jam.
+Theme: \"British Pigs\""
+
+[connection signal="pressed" from="InteractiblesContainer/ButtonsContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="InteractiblesContainer/ButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="InteractiblesContainer/ButtonsContainer/QuitButton" to="." method="_on_quit_button_pressed"]

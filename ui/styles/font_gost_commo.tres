@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://ch4qnno2euv16"]
+
+[sub_resource type="SystemFont" id="SystemFont_suxjm"]
+font_names = PackedStringArray("GOST Common")
+
+[resource]
+font = SubResource("SystemFont_suxjm")
+font_size = 50
+font_color = Color(0.4156184, 0.57489175, 1, 1)
+outline_size = 10

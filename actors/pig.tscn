@@ -1,0 +1,230 @@
+[gd_scene load_steps=17 format=3 uid="uid://conq3w82acr56"]
+
+[ext_resource type="Script" uid="uid://qtb3s2euymob" path="res://scripts/pig.gd" id="1_1u2wy"]
+[ext_resource type="Texture2D" uid="uid://dkx5rhq6cd7fq" path="res://assets/sprites/pig.png" id="1_cdv7h"]
+[ext_resource type="Texture2D" uid="uid://c273scpqwtvb6" path="res://assets/sprites/seagull_attack_0.png" id="3_vjcar"]
+[ext_resource type="Texture2D" uid="uid://cad650jvyjm2b" path="res://assets/sprites/seagull_attack_1.png" id="4_3ly8g"]
+[ext_resource type="Texture2D" uid="uid://cgrqjhigxfby" path="res://assets/sprites/seagull_fly_0.png" id="5_xx63w"]
+[ext_resource type="Texture2D" uid="uid://dgvgknc7pbhwp" path="res://assets/sprites/seagull_fly_1.png" id="6_dq5nc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r0vjv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vjcar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3ly8g")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_xx63w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_dq5nc")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1u2wy"]
+radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gbhn7"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_1u2wy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PigSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PigSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, -8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PigSprite:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.313]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Seagull:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.31299996]
+}
+
+[sub_resource type="Animation" id="Animation_gbhn7"]
+resource_name = "flip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PigSprite:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.313, -0.313]
+}
+
+[sub_resource type="Animation" id="Animation_cdv7h"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PigSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.108210415, 0.108210415]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PigSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-2, -3), Vector2(2, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbhn7"]
+_data = {
+&"RESET": SubResource("Animation_1u2wy"),
+&"flip": SubResource("Animation_gbhn7"),
+&"walk": SubResource("Animation_cdv7h")
+}
+
+[sub_resource type="Animation" id="Animation_3ly8g"]
+resource_name = "flip"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Seagull:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0.31299996, -0.313]
+}
+
+[sub_resource type="Animation" id="Animation_vjcar"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Seagull:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.31299996]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xx63w"]
+_data = {
+&"RESET": SubResource("Animation_vjcar"),
+&"flip": SubResource("Animation_3ly8g")
+}
+
+[node name="Pig" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_1u2wy")
+min_state_dur = 3.0
+max_state_dur = 10.0
+min_time_till_attack = 10.0
+max_time_till_attack = 90.0
+min_attack_duration = 20.0
+max_attack_duration = 50.0
+walk_speed = 150.0
+panic_speed = 250.0
+seagull_speed = 400.0
+
+[node name="PigSprite" type="Sprite2D" parent="."]
+position = Vector2(-5, -8)
+scale = Vector2(0.313, 0.313)
+texture = ExtResource("1_cdv7h")
+
+[node name="SeagullAttackPos" type="Marker2D" parent="PigSprite"]
+position = Vector2(3, -85)
+
+[node name="Seagull" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-4.061, -34.605)
+scale = Vector2(0.31299996, 0.313)
+sprite_frames = SubResource("SpriteFrames_r0vjv")
+animation = &"fly"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -6)
+shape = SubResource("CircleShape2D_1u2wy")
+
+[node name="FeedZone" type="Area2D" parent="."]
+
+[node name="FeedCollision" type="CollisionShape2D" parent="FeedZone"]
+position = Vector2(-7, -6)
+shape = SubResource("CircleShape2D_gbhn7")
+
+[node name="PigAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gbhn7")
+}
+
+[node name="SeagullAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xx63w")
+}
+
+[connection signal="body_entered" from="FeedZone" to="." method="_on_feed_zone_body_entered"]

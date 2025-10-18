@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdy44cambk6ji"]
+
+[ext_resource type="Script" uid="uid://dh4tox6b5ewbq" path="res://scripts/key_sequence.gd" id="1_alcnd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wkagm"]
+
+[node name="KeySequence" type="Panel"]
+visible = false
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wkagm")
+script = ExtResource("1_alcnd")
