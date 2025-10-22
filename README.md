@@ -1,4 +1,4 @@
-# Super Cool Epic Awesome Stuff: The Game
+# Super Epic Cool Awesome Stuff: The Game
 A game made for the LBS gymnasium game-jam #2 (2025).\
 (Duration: 42 hours. Theme: "British Pigs")
 
@@ -16,5 +16,5 @@ Moving is done with the mouse.
 
 # Open-source - Copyright
 
-**SCEAS_game © 2025 by Byte Dice is licensed under CC BY-NC-SA 4.0.**\
+**SECAS_game © 2025 by Byte Dice is licensed under CC BY-NC-SA 4.0.**\
 **You can learn more about copyright by reading the full [license](/LICENSE.txt).**
