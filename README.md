@@ -16,5 +16,5 @@ Moving is done with the mouse.
 
 # Open-source - Copyright
 
-**SECAS_game © 2025 by Byte Dice is licensed under CC BY-NC-SA 4.0.**\
+**SECAS_game © 2025 by Byte Dice is licensed under the MIT License**\
 **You can learn more about copyright by reading the full [license](/LICENSE.txt).**
